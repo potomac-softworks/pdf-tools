@@ -1,4 +1,4 @@
-import { PDFDocument, StandardFonts } from "../node_modules/pdf-lib/dist/pdf-lib.esm.js";
+import { PDFDocument, StandardFonts } from "pdf-lib";
 import * as passwordApi from "../lib/password/pdf-password.js";
 import { $, $$, setHidden } from "./html.js";
 
