@@ -10,7 +10,7 @@
     "crop:image": "node test/crop-image.js",
     "crop:page": "node test/crop-page.js"
   },
-  "dependencies": {
+  "devDependencies": {
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^5.6.205",
     "playwright": "^1.59.1"
