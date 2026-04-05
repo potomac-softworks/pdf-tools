@@ -8,7 +8,7 @@ async function loadPasswordApi() {
 }
 
 async function loadPdfJs() {
-  return import("./node_modules/pdfjs-dist/legacy/build/pdf.mjs");
+  return import("../node_modules/pdfjs-dist/legacy/build/pdf.mjs");
 }
 
 async function ensureDir(dirPath) {

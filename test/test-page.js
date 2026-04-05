@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { chromium } from "playwright";
-import { startStaticServer } from "./static-server.js";
+import { startStaticServer } from "../static-server.js";
 
 function normalizeTestFile(value) {
   const testFile = (value || "password/index.html").replace(/\\/g, "/").replace(/^\.?\//, "");

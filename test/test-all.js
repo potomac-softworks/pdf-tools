@@ -20,8 +20,8 @@ function runNodeScript(scriptPath) {
 }
 
 async function main() {
-  await runNodeScript("test-encryption.js");
-  await runNodeScript("test-page.js");
+  await runNodeScript("test/test-encryption.js");
+  await runNodeScript("test/test-page.js");
 }
 
 main().catch((error) => {
