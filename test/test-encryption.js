@@ -3,12 +3,14 @@ import path from "path";
 import { pathToFileURL } from "url";
 import { PDFDocument, StandardFonts } from "pdf-lib";
 
+const pdfjsStandardFontDataUrl = new URL("./standard_fonts/", import.meta.resolve("pdfjs-dist/package.json")).href;
+
 async function loadPasswordApi() {
   return import(pathToFileURL(path.join(process.cwd(), "lib", "password", "pdf-password.js")).href);
 }
 
 async function loadPdfJs() {
-  return import("../node_modules/pdfjs-dist/legacy/build/pdf.mjs");
+  return import("pdfjs-dist/legacy/build/pdf.mjs");
 }
 
 async function ensureDir(dirPath) {
@@ -50,7 +52,7 @@ async function openPdf(pdfjs, bytes, password) {
   const options = {
     data: Uint8Array.from(bytes),
     disableWorker: true,
-    standardFontDataUrl: "./node_modules/pdfjs-dist/standard_fonts/",
+    standardFontDataUrl: pdfjsStandardFontDataUrl,
   };
 
   if (typeof password === "string") {
