@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Password</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="../styles/bootstrap-theme.css">
+</head>
+<body>
+  <main class="container min-vh-100 py-4 py-lg-5">
+    <div class="row justify-content-center">
+      <div class="col-xl-9 col-lg-10">
+        <section class="mb-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <a data-icon="logo" href="../" aria-label="Back to PDF Tools"></a>
+            <h1 class="display-5 mb-0">Manage PDF Passwords</h1>
+          </div>
+          <p class="text-body-secondary fs-5 mb-0">Add, update, or remove passwords from PDF files.</p>
+        </section>
+
+        <div class="card">
+          <form id="passwordForm" novalidate>
+            <div class="card-header card-tabs-header">
+              <fieldset class="mb-0">
+                <ul class="nav nav-tabs card-header-tabs card-tabs" id="actionTabs" role="tablist" aria-label="Password actions">
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link card-tab active"
+                          id="actionTabAdd"
+                          data-action-tab="add"
+                          type="button"
+                          role="tab"
+                          aria-selected="true"
+                        >
+                          Add Password
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link card-tab"
+                          id="actionTabUpdate"
+                          data-action-tab="update"
+                          type="button"
+                          role="tab"
+                          aria-selected="false"
+                        >
+                          Update Password
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link card-tab"
+                          id="actionTabRemove"
+                          data-action-tab="remove"
+                          type="button"
+                          role="tab"
+                          aria-selected="false"
+                        >
+                          Remove Password
+                        </button>
+                      </li>
+                    </ul>
+
+                <div class="visually-hidden">
+                  <input type="radio" name="action" id="actionAdd" value="add" checked>
+                  <input type="radio" name="action" id="actionUpdate" value="update">
+                  <input type="radio" name="action" id="actionRemove" value="remove">
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="card-body">
+              <div class="mb-3">
+                <input class="form-control" type="file" id="pdfFile" name="pdfFile" accept="application/pdf" required>
+              </div>
+
+              <div id="currentPasswordRow" class="mb-3" hidden>
+                <div class="input-group">
+                  <label class="form-label input-group-text" for="currentPassword">Current Password</label>
+                  <input class="form-control" type="password" id="currentPassword" name="currentPassword" autocomplete="current-password" placeholder="Required to open the current PDF." required>
+                  <button class="input-group-text password-toggle-button" type="button" id="toggleCurrentPassword" data-toggle-type="#currentPassword:password:text" data-icon="eye-closed" aria-label="Show current password" aria-pressed="false">
+                    <span class="visually-hidden">Show current password</span>
+                  </button>
+                </div>
+              </div>
+
+              <div id="newUserPasswordRow" class="mb-3">
+                <div class="input-group">
+                  <label class="form-label input-group-text" for="newUserPassword" id="newUserPasswordLabel">Password</label>
+                  <input class="form-control" type="password" id="newUserPassword" name="newUserPassword" autocomplete="new-password" placeholder="Required to open the PDF." required>
+                  <button class="input-group-text password-toggle-button" type="button" id="toggleNewUserPassword" data-toggle-type="#newUserPassword:password:text" data-icon="eye-closed" aria-label="Show password" aria-pressed="false">
+                    <span class="visually-hidden">Show password</span>
+                  </button>
+                </div>
+              </div>
+
+              <div id="newOwnerPasswordRow" class="mb-3">
+                <details>
+                  <summary class="text-body-secondary small">Advanced</summary>
+                  <div class="mt-3">
+                    <div class="input-group">
+                      <label class="form-label input-group-text" for="newOwnerPassword">Permissions Password</label>
+                      <input class="form-control" type="password" id="newOwnerPassword" name="newOwnerPassword" autocomplete="new-password" placeholder="Optional. Uses the same password as above.">
+                      <button class="input-group-text password-toggle-button" type="button" id="toggleNewOwnerPassword" data-toggle-type="#newOwnerPassword:password:text" data-icon="eye-closed" aria-label="Show permissions password" aria-pressed="false">
+                        <span class="visually-hidden">Show permissions password</span>
+                      </button>
+                    </div>
+                    <div class="form-text">Optional. Use this only if you want a separate password for changing permissions instead of opening the PDF.</div>
+                  </div>
+
+                  <div id="algorithmRow" class="mt-3">
+                    <div class="input-group">
+                      <label class="form-label input-group-text" for="algorithm">Encryption</label>
+                      <select class="form-select" id="algorithm" name="algorithm">
+                        <option value="aes-256">AES-256</option>
+                        <option value="aes-128">AES-128</option>
+                      </select>
+                    </div>
+                  </div>
+                </details>
+              </div>
+
+              <button class="btn btn-primary" type="submit" id="submitButton">Add Password</button>
+
+              <div id="statusMessage" class="alert d-none mt-3 mb-0" aria-live="polite"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
