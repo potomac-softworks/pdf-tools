@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node static-server.js",
+    "test": "node test-all.js",
+    "test:page": "node test-page.js",
+    "test:reader": "node test-encryption.js",
+    "serve": "node static-server.js",
+    "screenshot": "node test-page.js --skip-tests",
+    "crop:image": "node scripts/crop-image.js",
+    "crop:page": "node scripts/crop-page.js"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.6.205",
+    "playwright": "^1.59.1"
+  }
+}
